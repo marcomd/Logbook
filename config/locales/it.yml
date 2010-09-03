@@ -1,0 +1,174 @@
+it:
+  date:
+    formats:
+      default: "%d-%m-%Y"
+      short: "%d %b"
+      long: "%d %B %Y"
+      only_day: "%e"
+
+    day_names: [Domenica, Lunedì, Martedì, Mercoledì, Giovedì, Venerdì, Sabato]
+    abbr_day_names: [Dom, Lun, Mar, Mer, Gio, Ven, Sab]
+    month_names: [~, Gennaio, Febbraio, Marzo, Aprile, Maggio, Giugno, Luglio, Agosto, Settembre, Ottobre, Novembre, Dicembre]
+    abbr_month_names: [~, Gen, Feb, Mar, Apr, Mag, Giu, Lug, Ago, Set, Ott, Nov, Dic]
+    order: [ :day, :month, :year ]
+
+  time:
+    formats:
+      default: "%a %d %b %Y, %H:%M:%S %z"
+      time: "%H:%M"
+      short: "%d %b %H:%M"
+      long: "%d %B %Y %H:%M"
+      only_second: "%S"
+
+      datetime:
+        formats:
+          default: "%d-%m-%YT%H:%M:%S%Z"
+
+    am: 'am'
+    pm: 'pm'
+
+  datetime:
+    distance_in_words:
+      half_a_minute: "mezzo minuto"
+      less_than_x_seconds:
+        one: "meno di un secondo"
+        other: "meno di {{count}} secondi"
+      x_seconds:
+        one: "1 secondo"
+        other: "{{count}} secondi"
+      less_than_x_minutes:
+        one: "meno di un minuto"
+        other: "meno di {{count}} minuti"
+      x_minutes:
+        one: "1 minuto"
+        other: "{{count}} minuti"
+      about_x_hours:
+        one: "circa un'ora"
+        other: "circa {{count}} ore"
+      x_days:
+        one: "1 giorno"
+        other: "{{count}} giorni"
+      about_x_months:
+        one: "circa un mese"
+        other: "circa {{count}} mesi"
+      x_months:
+        one: "1 mese"
+        other: "{{count}} mesi"
+      about_x_years:
+        one: "circa un anno"
+        other: "circa {{count}} anni"
+      over_x_years:
+        one: "oltre un anno"
+        other: "oltre {{count}} anni"
+
+  number:
+    format:
+      precision: 3
+      separator: ','
+      delimiter: '.'
+    currency:
+      format:
+        unit: '€'
+        precision: 2
+        format: '%n %u'
+
+  activerecord: &activerecord
+    models: &models
+    attributes: &attributes
+      user:
+        name: "Nome"
+        email: "Email"
+        password: "Password"
+        password_confirmation: "Conferma Password"
+        login: "Utenza"
+    errors:
+      template:
+        header:
+          one: "Non posso salvare questo {{model}}: 1 errore"
+          other: "Non posso salvare questo {{model}}: {{count}} errori."
+        body: "Per favore ricontrolla i seguenti campi:"
+      messages:
+        inclusion: "non è incluso nella lista"
+        exclusion: "è riservato"
+        invalid: "non è valido"
+        confirmation: "non coincide con la conferma"
+        accepted: "deve essere accettata"
+        empty: "non può essere vuoto"
+        blank: "non può essere lasciato in bianco"
+        too_long: "è troppo lungo (il massimo è {{count}} lettere)"
+        too_short: "è troppo corto (il minimo è {{count}} lettere)"
+        wrong_length: "è della lunghezza sbagliata (deve essere di {{count}} lettere)"
+        taken: "è già in uso"
+        not_a_number: "non è un numero"
+        greater_than: "deve essere superiore a {{count}}"
+        greater_than_or_equal_to: "deve essere superiore o uguale a {{count}}"
+        equal_to: "deve essere uguale a {{count}}"
+        less_than: "deve essere meno di {{count}}"
+        less_than_or_equal_to: "deve essere meno o uguale a {{count}}"
+        odd: "deve essere dispari"
+        even: "deve essere pari"
+      template:
+        header:
+          one:    "un errore impedisce il salvataggio di: {{model}}"
+          other:  "{{count}} errori impediscono il salvataggio di: {{model}}"
+        # The variable :count is also available
+        body: "Ci sono stati problemi con i seguenti campi:"
+
+  formtastic:
+    titles:
+    labels:
+      <<: *attributes
+    hints:
+    actions: &actions
+      create: "Crea {{model}}"
+      update: "Salva le modifiche"
+
+  account_activated: "{{login}} il tuo account è stato attivato.  Benvenuto a bordo!"
+  account_activation_url_message: "Visita questo indirizzo per attivare l'account:"
+  account_created: "Il tuo account è stato creato."
+  activation_complete_email_subject: 'Il tuo account è stato attivato!'
+  activation_required_email_subject: 'Sei pregato di attivare il tuo account.'
+  blank_activation_code: "Non è stato inserito il codice di attivazione.  Sei pregato di utilizzare l'indirizzo indicato sulla mail."
+  bogus_activation_code: "Non abbiamo trovato un {{model}} con questo codice di attivazione, hai controllato la tua email? O forse hai gia attivato, prova ad accedere."
+  create_account: "Crea un utenza"
+  log_in: "Entra"
+  log_out: "Disconnetti"
+  logged_in: "Accesso eseguito correttamente."
+  logged_in_as: "Accesso effettuato con l'utenza {{login}}"
+  logged_out: "Ti sei disconnesso, arrivederci."
+  login_failed : "Spiacente {{login}}, l'autenticazione non è avvenuta correttamente.'"
+  new_user_sign_up : "Registrati con un nuova utenza"
+  not_logged_in : "Non sei loggato"
+  remember_me : "Memorizza i miei dati"
+  sign_up : "Registrati"
+  signup_complete : "Registrazione completata! Ora effettua l'accesso per continuare."
+  signup_complete_with_activation : "Grazie per esserti registrato!  A breve riceverai il codice di registrazione, controlla la tua email."
+  signup_complete_admin : "Utenza creata ed attivata correttamente."
+  signup_problem : "Spiacente, un errore impedisce la creazione dell'account.  Riprova più tardi o contatta l'amministratore."
+
+  unknown_request: "Spiacente, richiesta sconosciuta, non è possibile eseguirla"
+  generic_error: "Un errore impedisce di svolgere questa operazione"
+  permission_denied: "Non hai i privilegi per svolgere questa operazione."
+  created: "L'oggetto {{model}} è stato creato correttamente."
+  created_ko: "Un errore ha impedito la creazione dell'oggetto {{model}}."
+  updated: "L'oggetto {{model}} è stato modificato correttamente."
+  updated_ko: "Un errore ha impedito la modifica dell'oggetto {{model}}."
+  deleted: "L'oggetto {{model}} è stato eliminato."
+
+  <<: *activerecord
+  <<: *actions
+  
+  save: "Salva"
+  edit: "Modifica"
+  delete: "Cancella"
+  destroy: "Elimina"
+  new: "Nuovo"
+  copy: "Copia"
+  back: "Indietro"
+  back_to_list: "Torna alla Lista"
+  show: "Visualizza"
+  show_all: "Mostra tutti"
+  sure?: "Sei sicuro?"
+  add: "Aggiungi"
+  search: "Cerca"
+  choose_language: "Scegli la lingua"

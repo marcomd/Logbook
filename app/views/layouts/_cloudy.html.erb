@@ -1,0 +1,19 @@
+<div id="header">
+  <h1><%= link_to APPLICATION_NAME, root_url %> <span class="subtitle"><%= ENV["RAILS_ENV"] %> <%= APPLICATION_VERSION %></span></h1>
+</div>
+
+<div id="container">
+  <%= render 'shared/message' %>
+
+  <%- if show_title? -%>
+    <h1><%=h yield(:title) %></h1>
+  <%- end -%>
+
+  <div id="dynamic">
+    <%= yield %>
+  </div>
+</div>
+
+<div id="footer">
+  <p><%= APPLICATION_NAME %> 2010, all rights reserved.</p>
+</div>

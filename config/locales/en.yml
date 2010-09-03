@@ -1,0 +1,79 @@
+en:
+  date:
+    formats:
+      default: "%d-%m-%Y"
+      short: "%d %b"
+      long: "%d %B %Y"
+      only_day: "%e"
+    order: [ :day, :month, :year ]
+  activerecord: &activerecord
+    models: &models
+    attributes: &attributes
+      user:
+        name: "Name"
+        email: "Email"
+        login: "Login"
+        password: "Password"
+        password_confirmation: "Confirm Password"
+        login: "Login"
+
+  formtastic:
+    titles:
+    labels:
+      <<: *attributes
+    hints:
+    actions: &actions
+      create: "Create my {{model}}"
+      update: "Save changes"
+
+  account_activated: "{{login}} your account has been activated.  Welcome aboard!"
+  account_activation_url_message: "Visit this url to activate your account:"
+  account_created: "Your account has been created."
+  activation_complete_email_subject: 'Your account has been activated!'
+  activation_required_email_subject: 'Please activate your new account'
+  blank_activation_code: "The activation code was missing.  Please follow the URL from your email."
+  bogus_activation_code: "We couldn't find a {{model}} with that activation code -- check your email? Or maybe you've already activated -- try signing in."
+  create_account: "Create account"
+  log_in: "Log In"
+  log_out: "Log Out"
+  logged_in: "Logged in successfully"
+  logged_in_as: "Logged in as {{login}}"
+  logged_out: "You have been logged out."
+  login_failed : "Couldn't log you in as {{login}}'"
+  new_user_sign_up : "Sign up as a new user"
+  not_logged_in : "Not logged in"
+  remember_me : "Remember me"
+  sign_up : "Sign up"
+  signup_complete : "Signup complete! Please sign in to continue."
+  signup_complete_with_activation : "Thanks for signing up!  We're sending you an email with your activation code."
+  signup_complete_admin : "User created and activated successfully."
+  signup_problem : "We couldn't set up that account, sorry.  Please try again, or contact an admin (link is above)."
+
+  unknown_request: "Sorry, this request is unkown and cannot be processed"
+  generic_error: "An error was occured and doesn't permit to execute this operation"
+  permission_denied: "You don't have authorization to perform this request."
+  created: "{{model}} was successfully created."
+  created_ko: "An error prohibited {{model}} to be created."
+  updated: "{{model}} was successfully updated."
+  updated_ko: "An error prohibited {{model}} to be updated."
+  deleted: "{{model}} was successfully deleted."
+
+  <<: *activerecord
+  <<: *actions
+
+  save: "Save"
+  create: "Create"
+  update: "Update"
+  edit: "Edit"
+  delete: "Delete"
+  destroy: "Destroy"
+  new: "New"
+  copy: "Copy"
+  back: "Back"
+  back_to_list: "Back to List"
+  show: "Show"
+  show_all: "Show all"
+  sure?: "Are you sure?"
+  add: "Add"
+  search: "Search"
+  choose_language: "Choose language"
