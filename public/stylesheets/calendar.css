@@ -6,6 +6,9 @@
 #calendar caption {
 	padding-bottom: 5px;
 	font-weight: bold;
+        width: 350px;
+        margin: 0 auto;
+        text-align: center;
 }
 
 #calendar table {

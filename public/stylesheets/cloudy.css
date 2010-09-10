@@ -270,19 +270,84 @@ div.pagination {
     text-decoration: underline;
   }
 /* BLOG */
+div#calendar .caption {
+  float: left;
+  padding: 1em 3em;
+}
+div#calendar .go {
+  float: left;
+}
+.go.back {
+    background: transparent url(../images/styles/cloudy/ico_back.png) no-repeat 0 0;
+    width: 52px;
+    height: 52px;
+}
+.go.next {
+    background: transparent url(../images/styles/cloudy/ico_next.png) no-repeat 0 0;
+    width: 52px;
+    height: 52px;
+}
+.go:hover {
+    background-position: 0px -52px;
+}
+
+div.home.blog {
+  padding: 2em;
+}
+  div.home.blog > div.icon {
+    float: left;
+    background: transparent url(../images/styles/cloudy/ico_activities.png) no-repeat 50% 50%;
+    width: 200px;
+    height: 163px;
+  }
+  div.home.blog > div.posts {
+    /*float: left;*/
+    margin-left: 250px;
+  }
 div.blog {
   padding: 1em;
-  border-bottom: 2px dashed #ddd;
 }
   div.blog > p.title {
-    color: #BA122B;
     font-weight: bold;
     margin-bottom: 0;
   }
   div.blog > p.subtitle {
-    color: #777;
-    font-size: 0.9em;
     margin: 0;
+  }
+/*div.home.blog.activity {
+  margin-left: 250px;
+}*/
+div.blog.activity {
+  border-bottom: 1px dashed #ccc;
+}
+  div.blog.activity > p.title {
+    color: #BA122B;
+  }
+  div.blog.activity > p.subtitle {
+    color: #888;
+    font-size: 0.9em;
+  }
+div.blog.task {
+  border-bottom: 2px dashed #ddd;
+}
+  div.blog.task > p.title {
+    color: #BA122B;
+    font-size: 1.3em;
+  }
+  div.blog.task > p.subtitle {
+    color: #777;
+    font-size: 1.0em;
+  }
+div.blog.project {
+  border-bottom: 5px groove #ddd;
+}
+  div.blog.project > p.title {
+    color: #BA122B;
+    font-size: 1.7em;
+  }
+  div.blog.project > p.subtitle {
+    color: #888;
+    font-size: 1.2em;
   }
 
 /* OTHER */
@@ -290,4 +355,8 @@ div.blog {
   clear: both;
   height: 0;
   overflow: hidden;
+}
+.center {
+  text-align: center;
+  margin: 0 auto;
 }
