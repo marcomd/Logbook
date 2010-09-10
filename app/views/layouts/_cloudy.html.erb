@@ -1,16 +1,31 @@
 <div id="header">
   <h1><%= link_to APPLICATION_NAME, root_url %> <span class="subtitle"><%= ENV["RAILS_ENV"] %> <%= APPLICATION_VERSION %></span></h1>
+  <%= render 'layouts/session' %>
 </div>
 
 <div id="container">
-  <%= render 'shared/message' %>
-
-  <%- if show_title? -%>
-    <h1><%=h yield(:title) %></h1>
-  <%- end -%>
+  <div id="menu">
+    <ul>
+      <li class="<%= controller.controller_path == 'home' ? 'active' : '' %>"><a href="<%= root_path %>">Home</a></li>
+      <% if current_user && current_user.role?(:admin) -%>
+      <li class="<%= controller.controller_path == 'admin/home' ? 'active' : '' %>"><a href="<%= admin_home_path %>">Admin</a></li>
+      <% end -%>
+      <li class="<%= controller.controller_path == 'projects' ? 'active' : '' %>"><a href="<%= projects_path %>"><%= t 'models.projects' %></a></li>
+      <li class="<%= controller.controller_path == 'tasks' ? 'active' : '' %>"><a href="<%= tasks_path %>"><%= t 'models.tasks' %></a></li>
+      <li class="<%= controller.controller_path == 'activities' ? 'active' : '' %>"><a href="<%= activities_path(:year => @year, :month => @month) %>"><%= t 'models.activities' %></a></li>
+    </ul>
+    <div class="clear"></div>
+  </div>
 
   <div id="dynamic">
-    <%= yield %>
+    <%= render 'shared/message' %>
+
+    <%- if show_title? -%>
+      <h1><%=h yield(:title) %></h1>
+    <%- end -%>
+
+    <div id="content"><%= yield %></div>
+    
   </div>
 </div>
 

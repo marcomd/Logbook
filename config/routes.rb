@@ -1,4 +1,13 @@
 ActionController::Routing::Routes.draw do |map|
+  map.namespace(:admin) do |admin|
+     admin.resources :users, :projects, :activities, :users
+     admin.resources :tasks, :collection => { :select => :post }
+     admin.home 'home', :controller => :home, :action => :index
+  end
+
+  map.resources :projects, :activities
+  map.resources :tasks, :collection => { :select => :post }
+
   map.root :controller => :home
 
   map.devise_for :users

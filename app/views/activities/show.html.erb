@@ -1,0 +1,42 @@
+<% title "#{t 'models.activity'}" %>
+
+<p>
+  <strong><%=t 'models.project' %>:</strong>
+  <%=h @activity.task.project.try(:name) %>
+</p>
+
+<p>
+  <strong><%=t 'attributes.activity.task' %>:</strong>
+  <%= link_to(h("#{@activity.task.try(:code)} #{@activity.task.try(:name)}"), @activity.task) if @activity.task %>
+</p>
+
+<p>
+  <strong><%=t 'attributes.activity.day' %>:</strong>
+  <%=h @activity.day %>
+</p>
+
+<p>
+  <strong><%=t 'attributes.activity.hours' %>:</strong>
+  <%=h @activity.hours %>
+</p>
+
+<p>
+  <strong><%=t 'attributes.activity.description' %>:</strong>
+  <%=h @activity.description %>
+</p>
+
+
+<p>
+
+  <%= link_to "#{t :new} #{t 'models.activity'}", new_activity_path %> |
+
+
+  <%= link_to t(:edit), edit_activity_path(@activity) %> |
+
+
+  <%= link_to t(:destroy), @activity, :confirm => t(:sure?), :method => :delete %> |
+
+
+  <%= link_to t(:back_to_list), activities_path %>
+
+</p>

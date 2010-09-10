@@ -1,0 +1,21 @@
+<% f.inputs do %>
+
+  <%= f.input :email %>
+
+  <%= f.input :password %>
+
+  <%= f.input :password_confirmation %>
+
+  <%= f.input :confirmed_at %>
+
+  <%# f.input :roles_mask, :as => :check_boxes, :collection => User::ROLES %>
+
+  <li>
+    <%= f.label :roles %>
+    <% for role in User::ROLES %>
+      <%= check_box_tag "user[roles][]", role, @user.roles.include?(role) %>
+      <%= h role.humanize %>
+    <% end %>
+    <%= hidden_field_tag "user[roles][]"%>
+  </li>
+<% end %>

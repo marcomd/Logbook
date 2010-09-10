@@ -1,0 +1,4 @@
+<p>Buon giorno <b><%= @args[:name] %></b>,</p>
+<p>l'elaborazione <b><%= @args[:task] %></b> di <%= APPLICATION_NAME %> versione <%= APPLICATION_VERSION %>, ha avuto esito <b><%= @args[:result] ? "positivo" : "negativo" %></b>.</p>
+
+<%= "<p><i>#{@args[:message]}</i></p>" if @args[:message] && @args[:message].any? %>

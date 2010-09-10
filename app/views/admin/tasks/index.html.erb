@@ -1,0 +1,44 @@
+<% title "#{t 'models.tasks'}" %>
+
+<%= render 'search' %>
+
+<% html_pagination = will_paginate(@tasks) %>
+<%= html_pagination %>
+<table cellspacing="0" class="admin">
+  <thead>
+  <tr>
+    <th>ID</th>
+    <th><%= t 'attributes.task.state' %></th>
+    <th><%= t 'attributes.task.code' %></th>
+    <th><%= t 'attributes.task.manager' %></th>
+    <th><%= t 'attributes.task.user' %></th>
+    <th><%= t 'attributes.task.project' %></th>
+    <th><%= t 'attributes.task.name' %></th>
+    <th><%= t 'attributes.task.description' %></th>
+    <th><%= t :progress %></th>
+  </tr>
+  </thead>
+  <tbody>
+  <% for task in @tasks %>
+    <tr class="<%= cycle 'even', 'odd' %>">
+      <td><%=h task.id %></td>
+      <td><%= image_tag("styles/#{STYLE}/task_state_#{task.state}.png", {:title => t("attributes.task.states.#{task.state_name}")}) if task.state %></td>
+      <td><%=h task.code %></td>
+      <td><%=h toname task.manager.try(:email) %></td>
+      <td><%=h toname task.user.try(:email) %></td>
+      <td><%=h task.project.try(:name) %></td>
+      <td><%=h task.name %></td>
+      <td><%=h task.description[0..30] %></td>
+      <td><%= show_bar(task.expected_hours, task.activities.map{|a| a.hours}.inject{|tot,h| tot+h}) %></td>
+      <td><%= link_to t(:show), [:admin, task] %></td>
+      <td><%= link_to t(:edit), edit_admin_task_path(task) %></td>
+      <td><%= link_to t(:destroy), [:admin, task], :confirm => t(:sure?), :method => :delete %></td>
+    </tr>
+  <% end %>
+  </tbody>
+</table>
+<%= html_pagination %>
+
+
+<p><%= link_to "#{t :new} #{t 'models.task'}", new_admin_task_path %></p>
+

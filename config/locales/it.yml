@@ -74,13 +74,61 @@ it:
 
   activerecord: &activerecord
     models: &models
+      user: "Utente"
+      users: "Utenti"
+      activity: "Attività"
+      activities: "Attività"
+      task: "Incarico"
+      tasks: "Incarichi"
+      project: "Progetto"
+      projects: "Progetti"
+
     attributes: &attributes
+      activity:
+        task: "Incarico"
+        day: "Giorno"
+        hours: "Ore"
+        hour: "Ora"
+        description: "Descrizione"
+      task:
+        manager: "Responsabile"
+        user: "Utente riferimento"
+        project: "Progetto"
+        name: "Nome"
+        description: "Descrizione"
+        code: "Codice"
+        expected_hours: "Ore stimate"
+        state: "Stato"
+        states:
+          new: "Nuovo"
+          assigned: "Assegnato"
+          working: "In lavorazione"
+          freezed: "Congelato"
+          closed: "Chiuso"
+          deleted: "Cancellato"
+        events:
+          assign: "Assegna"
+          free: "Libera"
+          work: "Lavora"
+          unload: "Scarica"
+          freeze: "Congela"
+          defreeze: "Scongela"
+          close: "Chiudi"
+          cancel: "Cancella"
+          open: "Apri"
+      project:
+        user: "Utente"
+        name: "Nome"
+        description: "Descrizione"
       user:
         name: "Nome"
         email: "Email"
         password: "Password"
         password_confirmation: "Conferma Password"
         login: "Utenza"
+        confirmed_at: "Confermato"
+        sign_in_count: "Accessi"
+        roles: "Ruoli"
     errors:
       template:
         header:
@@ -119,32 +167,33 @@ it:
     labels:
       <<: *attributes
     hints:
+      user:
+        email: "Utilizza una email valida"
+        confirmed_at: "Imposta quando è stata confermata, determina anche se attiva."
+
+      activity:
+        task: "Seleziona l'incarico a cui associare l'attività"
+        day: "Inserisci il giorno di riferimento"
+        hours: "Inserisci le ore"
+        description: "Descrivi la tua attività"
+
+      task:
+        manager: "Scegli il responsabile per questo incarico"
+        user: "Scegli l'utente di riferimento"
+        project: "Seleziona il progetto"
+        name: "Inserisci un nome che identifichi questo incarico"
+        description: "Descrivi gli obiettivi da raggiungere ed eventualmente, la modalità."
+        code: "Inserisci il codice"
+        expected_hours: "Inserisci la stima delle ore necessarie al raggiungimento degli obiettivi"
+
+      project:
+        user: "Scegli l'utente di riferimento per questo progetto"
+        name: "Scegli un buon nome per il progetto"
+        description: "Inserisci una breve descrizione del progetto"
+
     actions: &actions
       create: "Crea {{model}}"
       update: "Salva le modifiche"
-
-  account_activated: "{{login}} il tuo account è stato attivato.  Benvenuto a bordo!"
-  account_activation_url_message: "Visita questo indirizzo per attivare l'account:"
-  account_created: "Il tuo account è stato creato."
-  activation_complete_email_subject: 'Il tuo account è stato attivato!'
-  activation_required_email_subject: 'Sei pregato di attivare il tuo account.'
-  blank_activation_code: "Non è stato inserito il codice di attivazione.  Sei pregato di utilizzare l'indirizzo indicato sulla mail."
-  bogus_activation_code: "Non abbiamo trovato un {{model}} con questo codice di attivazione, hai controllato la tua email? O forse hai gia attivato, prova ad accedere."
-  create_account: "Crea un utenza"
-  log_in: "Entra"
-  log_out: "Disconnetti"
-  logged_in: "Accesso eseguito correttamente."
-  logged_in_as: "Accesso effettuato con l'utenza {{login}}"
-  logged_out: "Ti sei disconnesso, arrivederci."
-  login_failed : "Spiacente {{login}}, l'autenticazione non è avvenuta correttamente.'"
-  new_user_sign_up : "Registrati con un nuova utenza"
-  not_logged_in : "Non sei loggato"
-  remember_me : "Memorizza i miei dati"
-  sign_up : "Registrati"
-  signup_complete : "Registrazione completata! Ora effettua l'accesso per continuare."
-  signup_complete_with_activation : "Grazie per esserti registrato!  A breve riceverai il codice di registrazione, controlla la tua email."
-  signup_complete_admin : "Utenza creata ed attivata correttamente."
-  signup_problem : "Spiacente, un errore impedisce la creazione dell'account.  Riprova più tardi o contatta l'amministratore."
 
   unknown_request: "Spiacente, richiesta sconosciuta, non è possibile eseguirla"
   generic_error: "Un errore impedisce di svolgere questa operazione"
@@ -154,6 +203,12 @@ it:
   updated: "L'oggetto {{model}} è stato modificato correttamente."
   updated_ko: "Un errore ha impedito la modifica dell'oggetto {{model}}."
   deleted: "L'oggetto {{model}} è stato eliminato."
+
+  calendar_date_select:
+    ok: "Ok"
+    now: "Ora"
+    today: "Oggi"
+    clear: "Pulisci"
 
   <<: *activerecord
   <<: *actions
@@ -171,4 +226,7 @@ it:
   sure?: "Sei sicuro?"
   add: "Aggiungi"
   search: "Cerca"
+  from: "Da"
+  to: "A"
+  progress: "Progresso"
   choose_language: "Scegli la lingua"

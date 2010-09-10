@@ -1,0 +1,23 @@
+<% html_pagination = will_paginate(@tasks) %>
+<%= html_pagination %>
+
+<% for activity in @activities %>
+<div class="blog activity">
+  <p class="title"><%=h l activity.day, :format => '%A - %d %B %Y' %></p>
+  <p class="subtitle"><%= toname activity.user.try(:email) %> - <%=h activity.hours %> <%= t "attributes.activity.hour#{activity.hours == 1 ? '' : 's'}" %></p>
+  <p><%=h activity.description %></p>
+  <p>
+    <%= link_to t(:show), activity %> |
+    <%= link_to t(:edit), edit_activity_path(activity) %> |
+    <%= link_to t(:destroy), activity, :confirm => t(:sure?), :method => :delete %>
+  </p>
+</div>
+<% end %>
+
+<%= html_pagination %>
+
+<p>
+  <%= link_to t(:back), root_path %> |
+  <%= link_to "#{t :add} #{t 'models.activity'}", new_activity_path %>
+</p>
+

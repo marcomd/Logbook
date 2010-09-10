@@ -1,0 +1,11 @@
+        <td><%= check_box_tag "select[]", task.id, false, :class => 'selective' %></td>
+        <td><%= image_tag("styles/#{STYLE}/task_state_#{task.state}.png", {:title => h(msg ? msg : t("attributes.task.states.#{task.state_name}"))}) if task.state %></td>
+        <td><%=h task.code %></td>
+        <td><%=h toname task.manager.try(:email) %></td>
+        <td><%=h toname task.user.try(:email) %></td>
+        <td><%=h task.project.try(:name) %></td>
+        <td><%=h task.name %></td>
+        <td><%= show_bar(task.expected_hours, task.activities.map{|a| a.hours}.inject{|tot,h| tot+h}) %></td>
+        <td><%= link_to t(:show), task, {:class => 'lightview', :rel => 'ajax', :title => "#{h task.code} :: :: ajax: { method: 'get' }, width: 800, height: 500"} %></td>
+        <td><%= link_to t(:edit), edit_task_path(task) %></td>
+        <td><%= link_to t(:destroy), task, :confirm => t(:sure?), :method => :delete %></td>

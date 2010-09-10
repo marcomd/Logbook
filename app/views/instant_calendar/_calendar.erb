@@ -1,0 +1,64 @@
+<%= stylesheet_link_tag "calendar" %>
+
+<% time = Time.parse("#{year}/#{month}/1") %>
+<% prev_month = time.months_ago(1) %>
+<% next_month = time.months_since(1) %>
+<% first_day = time.beginning_of_month %>
+<% n = Time.days_in_month(time.month,time.year)%>
+
+<div id="calendar">
+        <div id="calendar_wrap">
+          <table summary="Calendar">
+            <caption>
+            <%= link_to "<<", root_path(:year=>prev_month.year,:month=>prev_month.month) %>
+            <%= l time, :format => '%B %Y'%>
+            <%= link_to ">>", root_path(:year=>next_month.year,:month=>next_month.month) %>
+            </caption>
+            <thead>
+              <tr>
+                <th abbr="Monday" scope="col" title="Lunedi">Lun</th>
+                <th abbr="Tuesday" scope="col" title="Martedi">Mar</th>
+                <th abbr="Wednesday" scope="col" title="Mercoledi">Mer</th>
+                <th abbr="Thursday" scope="col" title="Giovedi">Gio</th>
+                <th abbr="Friday" scope="col" title="Venerdi">Ven</th>
+                <th abbr="Saturday" scope="col" title="Sabato">Sab</th>
+                <th abbr="Sunday" scope="col" title="Domenica">Dom</th>
+              </tr>
+            </thead>
+            
+            <tbody>
+              <tr>
+                <% padding = (first_day.wday+6)%7 -%>
+                <% count = padding + 1 -%>
+                <%if padding != 0-%>
+                  <td colspan="<%= padding %>" class="pad">&nbsp;</td>
+                <%end-%>
+                <%1.upto(n) do |i|%>
+                  <%
+                  url = link_to("#{i}", activities_path(:year=>year, :month=>month, :day=>i), {:id=> "lnk_ajax"})
+                  myid = "date_#{i}"
+                  myvalue = url ? url : i
+                  myclass = []
+                  myclass << "today" if highlight_today and today?(year, month, i)
+                  myclass << "highlight" if highlight_dates.include?(i)
+
+                  case count%7
+                  when 1, 2, 3, 4
+                    #from Monday to Thursday
+                    myclass << "incomplete" if !@reports[i] || @reports[i] < 8
+                  when 5
+                    #Friday
+                    myclass << "incomplete" if !@reports[i] || @reports[i] < 5
+                  when 6, 0
+                    #Saturday, Sunday
+                  end
+                  -%>
+                  <td id="<%= myid %>" class="<%= myclass.join " " %>" ><%= myvalue %></td>
+                  <%="<tr/>" if count%7 ==0-%>
+                  <%count += 1-%>
+                <%end-%>
+              <%="<tr/>" if count%7 !=0-%>
+            </tbody>
+        </table>
+        </div>
+      </div>

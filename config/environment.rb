@@ -9,9 +9,14 @@ require File.join(File.dirname(__FILE__), 'boot')
 Rails::Initializer.run do |config|
   config.gem 'devise', :version => '1.0.4'
   config.gem 'warden', :version => '0.9.6'
-  config.gem 'cucumber', :version => '>=0.6.3'
   config.gem 'win32console', :version => '>=1.2.0'
-  config.gem 'win32console', :version => '>=1.2.0'
+  config.gem 'formtastic', :version => '0.9.8'
+  #config.gem 'calendare_date_select', :version => '1.16.1'
+
+  #config.gem "pdfkit"
+  #config.middleware.use "PDFKit::Middleware"
+  #config.gem "princely"
+
   # Settings in config/environments/* take precedence over those specified here.
   # Application configuration should go into files in config/initializers
   # -- all .rb files in that directory are automatically loaded.
@@ -43,4 +48,6 @@ Rails::Initializer.run do |config|
   # The default locale is :en and all translations from config/locales/*.rb,yml are auto loaded.
   # config.i18n.load_path += Dir[Rails.root.join('my', 'locales', '*.{rb,yml}')]
   # config.i18n.default_locale = :de
+
+  config.action_mailer.default_url_options = { :host => 'localhost:3000' }
 end

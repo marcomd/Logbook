@@ -6,9 +6,55 @@ en:
       long: "%d %B %Y"
       only_day: "%e"
     order: [ :day, :month, :year ]
+
   activerecord: &activerecord
     models: &models
+      user: "User"
+      users: "Users"
+      activity: "Activity"
+      activities: "Activities"
+      task: "Task"
+      tasks: "Tasks"
+      project: "Project"
+      projects: "Projects"
+
     attributes: &attributes
+      activity:
+        task: "Task"
+        day: "Day"
+        hours: "Hours"
+        hour: "Hour"
+        description: "Description"
+      task:
+        manager: "Manager"
+        user: "User"
+        project: "Project"
+        name: "Name"
+        description: "Description"
+        code: "Code"
+        expected_hours: "Expected hours"
+        state: "State"
+        states:
+          new: "New"
+          assigned: "Assigned"
+          working: "Working"
+          freezed: "Freezed"
+          closed: "Closed"
+          deleted: "Deleted"
+        events:
+          assign: "Assign"
+          free: "Free"
+          work: "Work"
+          unload: "Unload"
+          freeze: "Freeze"
+          defreeze: "Defreeze"
+          close: "Close"
+          cancel: "Cancel"
+          open: "Open"
+      project:
+        user: "User"
+        name: "Name"
+        description: "Description"
       user:
         name: "Name"
         email: "Email"
@@ -16,12 +62,38 @@ en:
         password: "Password"
         password_confirmation: "Confirm Password"
         login: "Login"
-
+        confirmed_at: "Confirmed at"
+        sign_in_count: "Sign in count"
+        roles: "Roles"
   formtastic:
     titles:
     labels:
       <<: *attributes
     hints:
+      user:
+        email: "Insert the email for your user"
+        confirmed_at: "Set when it has been confirmed, it will be active as well."
+
+      activity:
+        task: "Choose a task which associate activity"
+        day: "Insert the day"
+        hours: "Insert hours number"
+        description: "Describe your activity"
+
+      task:
+        manager: "Choose the manager for your task"
+        user: "Choose the user reference for your task"
+        project: "Choose the project for your task"
+        name: "Choose a good name for your task"
+        description: "Describe this task"
+        code: "Choose a good code for your task"
+        expected_hours: "Specify how many hours are planned"
+
+      project:
+        user: "Choose a user for this project"
+        name: "Choose a good name"
+        description: "Choose a short description for this project"
+
     actions: &actions
       create: "Create my {{model}}"
       update: "Save changes"
@@ -58,6 +130,12 @@ en:
   updated_ko: "An error prohibited {{model}} to be updated."
   deleted: "{{model}} was successfully deleted."
 
+  calendar_date_select:
+    ok: "Ok"
+    now: "Now"
+    today: "Today"
+    clear: "Clear"
+
   <<: *activerecord
   <<: *actions
 
@@ -76,4 +154,7 @@ en:
   sure?: "Are you sure?"
   add: "Add"
   search: "Search"
+  from: "From"
+  to: "To"
+  progress: "Progress"
   choose_language: "Choose language"

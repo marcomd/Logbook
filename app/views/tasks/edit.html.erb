@@ -1,0 +1,14 @@
+<% title "#{t :edit} #{t 'models.task'}" %>
+
+<%= render @task %>
+
+
+<p>
+
+  <%= link_to t(:show), @task %> |
+
+
+  <%= link_to t(:back_to_list), tasks_path %>
+
+</p>
+

@@ -1,0 +1,37 @@
+<% title "#{t 'models.user'}" %>
+
+
+<p>
+  <strong><%=t 'attributes.user.email' %>:</strong>
+  <%=h @user.email %>
+</p>
+
+<p>
+  <strong><%=t 'attributes.user.confirmed_at' %>:</strong>
+  <%=h @user.confirmed_at %>
+</p>
+
+<p>
+  <strong><%=t 'attributes.user.sign_in_count' %>:</strong>
+  <%=h @user.sign_in_count %>
+</p>
+
+<p>
+  <strong><%=t 'attributes.user.roles' %>:</strong>
+  <%=h @user.roles.join ", " %>
+</p>
+
+<p>
+
+  <%= link_to "#{t :new} #{t 'models.user'}", new_admin_user_path %> |
+
+
+  <%= link_to t(:edit), edit_admin_user_path(@user) %> |
+
+
+  <%= link_to t(:destroy), [:admin, @user], :confirm => t(:sure?), :method => :delete %> |
+
+
+  <%= link_to t(:back_to_list), admin_users_path %>
+
+</p>

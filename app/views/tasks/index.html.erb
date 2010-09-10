@@ -1,0 +1,39 @@
+<%= javascript 'ajax_form', 'selector' %>
+
+<% title "#{t 'models.tasks'}" %>
+
+<%= render 'search' %>
+
+<% html_pagination = will_paginate(@tasks) %>
+<%= html_pagination %>
+
+<% form_for :select, :url =>select_tasks_path, :html => { :method => :post, :class => "form_ajax2", :name=>'form_select' } do |f| %>
+  <table cellspacing="0" class="user">
+    <thead>
+    <tr>
+      <th><%= check_box_tag :all, true, false, :class => "select toggle" %></th>
+      <th><%= t 'attributes.task.state' %></th>
+      <th><%= t 'attributes.task.code' %></th>
+      <th><%= t 'attributes.task.manager' %></th>
+      <th><%= t 'attributes.task.user' %></th>
+      <th><%= t 'attributes.task.project' %></th>
+      <th><%= t 'attributes.task.name' %></th>
+      <th><%= t :progress %></th>
+    </tr>
+    </thead>
+    <tbody>
+    <% for task in @tasks %>
+      <tr id="tr_<%= task.id %>" class="<%= cycle 'even', 'odd' %>">
+        <%= render 'row_index', :task => task, :msg => nil %>
+      </tr>
+    <% end %>
+    </tbody>
+  </table>
+  <%= html_pagination %>
+  <%= hidden_field_tag :operation %>
+  <%= submit_tag t('attributes.task.events.close'), {:class=>'button submit large', :onclick=>"document.form_select.operation.value=this.value;"} %>
+  <%= submit_tag t('attributes.task.events.cancel'), {:class=>'button submit large', :onclick=>"document.form_select.operation.value=this.value;"} %>
+  <%= submit_tag t('attributes.task.events.open'), {:class=>'button submit large', :onclick=>"document.form_select.operation.value=this.value;"} %>
+<% end %>
+
+<p><%= link_to "#{t :new} #{t 'models.task'}", new_task_path %></p>

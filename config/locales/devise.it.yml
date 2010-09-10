@@ -1,0 +1,35 @@
+it:
+  devise:
+    sessions:
+      link: "Entra"
+      signed_in: "Connesso con successo."
+      signed_out: "Disconnesso con successo."
+      unauthenticated: "Devi connetterti o registrarti prima di continuare."
+      unconfirmed: "Devi confermare il tuo account prima di continuare."
+      locked: "Account bloccato."
+      invalid: "Email o password non validi."
+      invalid_token: "Parametro di autenticazione non valido."
+      timeout: "Sessione scaduta, sei pregato di riconnetterti per poter proseguire."
+      inactive: "Account ancora non attivo."
+    passwords:
+      link: "Password dimenticata?"
+      send_instructions: "Riceverai una mail con le istruzioni su come reimpostare la password in pochi minuti."
+      updated: "Password modificata con successo. Ora sei connesso."
+    confirmations:
+      link: "Non ha ricevuto le istruzioni di conferma?"
+      send_instructions: "Riceverai una mail con le istruzioni su come confermare il tuo account in pochi minuti."
+      confirmed: "Account confermato con successo. Ora sei connesso."
+    registrations:
+      link: "Registrati"
+      signed_up: "Registrazione effettuata con successo."
+      updated: "Account modificato con successo."
+      destroyed: "Arrivederci! Account cancellato con successo. Speriamo di rivederti presto."
+    unlocks:
+      link: "Non ha ricevuto le istruzioni per lo sblocco?"
+      send_instructions: "Riceverai una mail con le istruzioni su come sbloccare il tuo account in pochi minuti."
+      unlocked: "YAccount sbloccato con successo. Ora sei connesso."
+    mailer:
+      confirmation_instructions: "Istruzioni per la conferma"
+      reset_password_instructions: "Istruzioni per reimpostare la password"
+      unlock_instructions: "Istruzioni per lo sblocco"
+

@@ -1,0 +1,9 @@
+<% f.inputs do %>
+
+  <%= f.input :user, :collection => Hash[*@managers.collect {|u| [u.email, u.id]}.flatten] %>
+
+  <%= f.input :name %>
+
+  <%= f.input :description %>
+
+<% end %>

@@ -1,0 +1,63 @@
+<% title "#{t 'models.task'}: #{@task.name}" %>
+
+<p>
+  <strong><%=t 'attributes.task.state' %>:</strong>
+  <%= t("attributes.task.states.#{@task.state_name}") %>
+  <%= image_tag("styles/#{STYLE}/task_state_#{@task.state}.png", {:title => t("attributes.task.states.#{@task.state_name}")}) if @task.state %>
+</p>
+
+<p>
+  <strong><%=t 'attributes.task.manager' %>:</strong>
+  <%=h @task.manager.try(:email) %>
+</p>
+
+<p>
+  <strong><%=t 'attributes.task.user' %>:</strong>
+  <%=h @task.user.try(:email) %>
+</p>
+
+<p>
+  <strong><%=t 'models.users' %>:</strong>
+  <%=h @task.users.map{|e| toname(e.email)}.join(', ') %>
+</p>
+
+<p>
+  <strong><%=t 'attributes.task.project' %>:</strong>
+  <%=h @task.project.try(:name) %>
+</p>
+
+<p>
+  <strong><%=t 'attributes.task.name' %>:</strong>
+  <%=h @task.name %>
+</p>
+
+<p>
+  <strong><%=t 'attributes.task.description' %>:</strong>
+  <%=h @task.description %>
+</p>
+
+<p>
+  <strong><%=t 'attributes.task.code' %>:</strong>
+  <%=h @task.code %>
+</p>
+
+<p>
+  <strong><%=t 'attributes.task.expected_hours' %>:</strong>
+  <%=h @task.expected_hours %>
+</p>
+
+<p>
+  <strong><%=t :progress %>:</strong>
+  <%= show_bar(@task.expected_hours, @tot_hours) %>
+</p>
+
+<p>
+  Sono state effettuate <strong><%=h @activities.size %> </strong> <%= link_to "attività", activities_path(:code => @task.code)  %> per un totale di <strong><%=h @tot_hours %> </strong> ore.
+</p>
+
+<p>
+  <%= link_to "#{t :new} #{t 'models.task'}", new_admin_task_path %> |
+  <%= link_to t(:edit), edit_admin_task_path(@task) %> |
+  <%= link_to t(:destroy), [:admin, @task], :confirm => t(:sure?), :method => :delete %> |
+  <%= link_to t(:back_to_list), admin_tasks_path %>
+</p>

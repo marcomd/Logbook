@@ -1,0 +1,13 @@
+one:
+
+  email: MyString
+
+  confirmed_at: 2010-05-04
+
+
+two:
+
+  email: MyString
+
+  confirmed_at: 2010-05-04
+

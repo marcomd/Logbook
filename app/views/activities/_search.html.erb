@@ -1,0 +1,24 @@
+<% form_for :activity, :html => { :method => :get, :class => "form_ajax1", :name => 'frm_search' } do |f| %>
+  <div>
+    <p style="float: left">
+      <%= f.label t('attributes.task.code') %>
+      <%= text_field_tag 'task[code]', @task.code, {:size => 15} %>
+    </p>
+    <p style="float: left">
+      <%= f.label t('attributes.activity.description') %>
+      <%= f.text_field :description, { :size => 17 } %>
+    </p>
+    <p style="float: left">
+      <%= f.label t('from') %>
+      <%#= f.date_select :day %>
+      <%#= calendar_date_select_tag "activity[day]", @activity.day.strftime("%d/%m/%Y") %>
+      <%= calendar_date_select_tag "date_from", @str_date_from %>
+    </p>
+    <p style="float: left">
+      <%= f.label t('to') %>
+      <%#= f.date_select :day %>
+      <%= calendar_date_select_tag "date_to", @str_date_to %>
+    </p>
+    <p style="clear: both"><%= f.submit 'Search' %></p>
+  </div>
+<% end %>

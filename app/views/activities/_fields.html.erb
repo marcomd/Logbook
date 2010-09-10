@@ -1,0 +1,11 @@
+<% f.inputs do %>
+
+  <%= f.input :task, :collection => Hash[*@tasks.collect {|t| ["#{t.code} #{t.name}", t.id]}.flatten] %>
+
+  <%= f.input :day %>
+
+  <%= f.input :hours %>
+
+  <%= f.input :description %>
+
+<% end %>

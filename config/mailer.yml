@@ -1,5 +1,2 @@
-:address: mail.authsmtp.com
-:domain: yourdomain.com
-:authentication: :login
-:user_name: USERNAME
-:password: PASSWORD
+:address: 192.168.1.32
+:domain: localhost.localdomain

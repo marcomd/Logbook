@@ -1,0 +1,27 @@
+<% f.inputs do %>
+
+  <% unless current_user.role? :manager -%>
+  <%= f.input :manager, :collection => Hash[*@managers.collect {|u| [u.email, u.id]}.flatten] %>
+  <% end -%>
+
+  <% if current_user.role? :manager -%>
+    <% unless @task.new_record? %>
+      <%= f.input :user, :collection => Hash[*@task.users.collect {|u| [u.email, u.id]}.flatten] %>
+    <% end %>
+    <li>
+      <label><%= t 'models.users' %></label>
+      <%= manage_to_many_checkbox(@users, @task, "user", 4) %>
+    </li>
+  <% end -%>
+
+  <%= f.input :project %>
+
+  <%= f.input :code %>
+
+  <%= f.input :name %>
+
+  <%= f.input :description %>
+
+  <%= f.input :expected_hours %>
+
+<% end %>

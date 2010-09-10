@@ -1,0 +1,14 @@
+<% title "#{t :edit} #{t 'models.project'}" %>
+
+<%= render @project %>
+
+
+<p>
+
+  <%= link_to t(:show), [:admin, @project] %> |
+
+
+  <%= link_to t(:back_to_list), admin_projects_path %>
+
+</p>
+

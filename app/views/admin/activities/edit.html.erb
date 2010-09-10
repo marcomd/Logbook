@@ -1,0 +1,14 @@
+<% title "#{t :edit} #{t 'models.activity'}" %>
+
+<%= render @activity %>
+
+
+<p>
+
+  <%= link_to t(:show), [:admin, @activity] %> |
+
+
+  <%= link_to t(:back_to_list), admin_activities_path %>
+
+</p>
+

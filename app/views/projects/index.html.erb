@@ -1,0 +1,25 @@
+<% title "#{t 'models.projects'}" %>
+
+<table cellspacing="0" class="user">
+  <thead>
+    <tr>
+      <th><%= t 'attributes.project.user' %></th>
+      <th><%= t 'attributes.project.name' %></th>
+      <th><%= t 'attributes.project.description' %></th>
+    </tr>
+  </thead>
+  <tbody>
+  <% for project in @projects %>
+    <tr class="<%= cycle 'even', 'odd' %>">
+      <td><%=h toname project.user.try(:email) %></td>
+      <td><%=h project.name %></td>
+      <td><%=h project.description[0..30] %>...</td>
+      <td><%= link_to t(:show), project %></td>
+      <td><%= link_to t(:edit), edit_project_path(project) %></td>
+      <td><%= link_to t(:destroy), project, :confirm => t(:sure?), :method => :delete %></td>
+    </tr>
+  <% end %>
+  </tbody>
+</table>
+
+<p><%= link_to "#{t :new} #{t 'models.project'}", new_project_path %></p>

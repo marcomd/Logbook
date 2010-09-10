@@ -1,0 +1,18 @@
+@tasks.each do |task|
+  id = "tr_#{task.id.to_s}"
+  
+  result = @results[task.id]
+  msg = nil
+  if result.is_a? Array
+    #Se viene restituito un array è un errore: [false, "messaggio di errore"]
+    msg = result[1]
+    result = result[0]
+  end
+
+  page.replace_html(id , :partial => "row_index", :locals=>{:task=>task, :msg=>msg})
+  if result
+    page[id].visual_effect :highlight, :startcolor => "#cccccc" , :endcolor => "#f8f8f8"
+  else
+    page[id].visual_effect :highlight, :startcolor => "#ffaaaa" , :endcolor => "#f8f8f8"
+  end
+end

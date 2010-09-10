@@ -1,0 +1,20 @@
+<% form_for :task, :html => { :method => :get } do |f| %>
+  <p>
+    <%= f.label t('attributes.task.manager') %>
+    <%= collection_select(:task, :manager_id, @managers, :id, :email, {:prompt => true, :include_blank => true}) %>
+    <%= f.label t('attributes.task.user') %>
+    <%= collection_select(:task, :user_id, @users, :id, :email, {:prompt => true, :include_blank => true}) %>
+    <%= f.label t('attributes.task.code') %>
+    <%= f.text_field :code, :size => 15 %>
+  </p>
+  <p>
+    <%= f.label t('attributes.task.name') %>
+    <%= f.text_field :name, :size => 20 %>
+    <%= f.label t('attributes.task.description') %>
+    <%= f.text_field :description, :size => 20 %>
+  </p>
+  <p>
+    <%= f.submit t(:search) %>
+    <%= f.submit 'Csv' %>
+  </p>
+<% end %>

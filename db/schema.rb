@@ -9,7 +9,48 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100413100307) do
+ActiveRecord::Schema.define(:version => 20100805155224) do
+
+  create_table "activities", :force => true do |t|
+    t.integer  "task_id"
+    t.date     "day"
+    t.integer  "hours"
+    t.text     "description"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "user_id"
+  end
+
+  create_table "projects", :force => true do |t|
+    t.integer  "user_id"
+    t.string   "name"
+    t.text     "description"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "tasks", :force => true do |t|
+    t.integer  "manager_id"
+    t.integer  "user_id"
+    t.integer  "project_id"
+    t.string   "name"
+    t.text     "description"
+    t.string   "code"
+    t.integer  "expected_hours"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "state"
+  end
+
+  create_table "tasks_users", :id => false, :force => true do |t|
+    t.integer  "task_id"
+    t.integer  "user_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "tasks_users", ["task_id"], :name => "index_tasks_users_on_task_id"
+  add_index "tasks_users", ["user_id"], :name => "index_tasks_users_on_user_id"
 
   create_table "users", :force => true do |t|
     t.string   "email",                              :null => false

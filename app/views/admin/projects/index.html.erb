@@ -1,0 +1,37 @@
+<% title "#{t 'models.projects'}" %>
+
+<table>
+  <tr>
+
+    <th><%= t 'attributes.project.user' %></th>
+
+    <th><%= t 'attributes.project.name' %></th>
+
+    <th><%= t 'attributes.project.description' %></th>
+
+  </tr>
+  <% for project in @projects %>
+    <tr>
+
+      <td><%=h project.user.try(:email) %></td>
+
+      <td><%=h project.name %></td>
+
+      <td><%=h project.description %></td>
+
+
+      <td><%= link_to t(:show), [:admin, project] %></td>
+
+
+      <td><%= link_to t(:edit), edit_admin_project_path(project) %></td>
+
+
+      <td><%= link_to t(:destroy), [:admin, project], :confirm => t(:sure?), :method => :delete %></td>
+
+    </tr>
+  <% end %>
+</table>
+
+
+<p><%= link_to "#{t :new} #{t 'models.project'}", new_admin_project_path %></p>
+

@@ -1,0 +1,7 @@
+<p>Buon giorno <b><%= @args[:name] %></b>,</p>
+<p>questo è il riepilogo dell'operazione in oggetto:</p>
+<ul>
+<%- @args[:outcome].each do |k, v| -%>
+  <li><%= k %>: <%= v %></li>
+<%- end -%>
+</ul>

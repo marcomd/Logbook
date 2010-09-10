@@ -31,27 +31,79 @@ div#header {
 }
 div#header h1 {
   margin:  0;
+  float: left;
+  }
+div#header #session {
+  padding: 5px;
+  float: right;
+  color: #aaa;
+  font-size: 0.9em;
   }
 div#header h1 a:link, div#header h1 a:visited  {
+  color: #BA122B;
   text-decoration: none;
   }
 div#header .subtitle {
-  color: #000;
+  color: #aaa;
   font-size: 0.4em;
   }
 div#container {
-  width: 75%;
+  width: 85%;
   margin: 20px auto;
+  clear: both;
+}
+div#dynamic {
   background-color: #FFF;
+  /*margin: 20px auto;*/
   padding: 20px 40px;
   border: 5px solid #CCC;
-  -moz-border-radius:12px 12px 12px 12px;/*Mozzilla Firefox*/
-  border-bottom-radius: 12px 12px 12px 12px;/*Google chrome*/
+  /*border-top-width: 0px;*/
+  -moz-border-radius:0px 12px 12px 12px;/*Mozzilla Firefox*/
+  border-radius: 0px 12px 12px 12px;/*Google chrome*/
 }
 div#footer p {
   color: #777;
   font-size: 0.8em;
   text-align: center;
+}
+/* MENU */
+#menu {
+  width: 100%;
+  /*border-bottom: 5px solid #CCC;*/
+  margin: 0 auto;
+  position: relative;
+  top: 5px;
+  left: 0px;
+}
+#menu ul {
+  margin: 0;
+  padding: 0;
+  list-style-type: none;
+  /*margin-top: -5px;*/
+  /*margin-left: 5px;*/
+}
+#menu ul li {
+  float: left;
+  border: 5px solid #CCC;
+  -moz-border-radius:12px 12px 0px 0px;/*Mozzilla Firefox*/
+  border-radius: 12px 12px 0px 0px;/*Google chrome*/
+  background-color: #CCC;
+  margin-right: 5px;
+  
+}
+#menu ul li.active {
+  border-bottom: 5px solid #CCC;
+  background-color: #FFF;
+  font-weight: bold;
+  border-bottom: 5px solid #FFF;
+}
+#menu ul li a:link, #menu ul li a:visited, #menu ul li a:hover, #menu ul li a:active {
+  text-decoration: none;
+}
+#menu ul li a {
+  font-size: 15px;
+  display: block;
+  padding: 8px 15px;
 }
 
 /* FORM */
@@ -89,6 +141,52 @@ h1 {color: #444;}
 h2 {color: #555;}
 h3 {color: #666;}
 
+/* TABLES */
+/*--- USER ---*/
+table.user {
+  width:100%;
+  margin: 3em auto;
+  margin-bottom: 3em;
+}
+table.user th {
+  /*background-color: #444e5d;*/
+  background-color: inherit;
+  color:#666;
+  padding: 0.2em 0.4em;
+}
+table.user th.main {
+  font-weight:bold;
+  text-align:center;
+}
+table.user tr {
+  line-height: 1.2em;
+  height: 2.5em;
+}
+table.user tr.odd {
+  background-color:#f3f3f3;
+}
+table.user tr.even {
+  background-color:#fff;
+}
+table.user tr:hover {
+  background-color:#ffc;
+}
+table.user tr.selected {
+  background-color:#ffb;
+}
+table.user thead tr:hover {
+  background-color: inherit;
+}
+table.user td {
+  padding: 2px;
+  color:#555;
+}
+table.user td.main {
+  color: #666;
+  font-weight:bold;
+  text-align:center;
+}
+
 /* MESSAGES */
 .message {
   padding: 15px;
@@ -102,8 +200,13 @@ h3 {color: #666;}
   }
   .message.error {
     background: #FFF url(../images/styles/cloudy/msg_error.gif) no-repeat 15px 50%;
-    border-color: #C00;
+    border: 1px solid #C00;
     color: #C00;
+  }
+  .message.alert {
+    background: #FFC url(../images/styles/cloudy/msg_error.gif) no-repeat 15px 50%;
+    border: 1px solid #FF4;
+    color: #AA0;
   }
 
 /* ERRORS */
@@ -165,6 +268,21 @@ div.pagination {
   }
   .pagination a:hover, .pagination a:focus {
     text-decoration: underline;
+  }
+/* BLOG */
+div.blog {
+  padding: 1em;
+  border-bottom: 2px dashed #ddd;
+}
+  div.blog > p.title {
+    color: #BA122B;
+    font-weight: bold;
+    margin-bottom: 0;
+  }
+  div.blog > p.subtitle {
+    color: #777;
+    font-size: 0.9em;
+    margin: 0;
   }
 
 /* OTHER */
