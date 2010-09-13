@@ -1,9 +1,9 @@
-class AddRolesMaskToUsers < ActiveRecord::Migration
+class AddUserAdmin < ActiveRecord::Migration
   def self.up
-    User.create(:email=>'admin@logbook.it', 
+    User.create(:email=>'admin@logbook.it',
                 :password=>'admin',
-                :password_confirmation=>'admin'
-                :confirmed_at=>Time.now
+                :password_confirmation=>'admin',
+                :confirmed_at=>Time.now,
                 :roles=>['admin'])
   end
 
