@@ -1,13 +1,15 @@
 class AddUserAdmin < ActiveRecord::Migration
   def self.up
-    User.create(:email=>'admin@logbook.it',
-                :password=>'admin',
-                :password_confirmation=>'admin',
-                :confirmed_at=>Time.now,
+    admin=User.new(:email=>'admin@logbook.it',
+                :password=>'admina',
+                :password_confirmation=>'admina',
                 :roles=>['admin'])
+    admin.update_attributes :confirmed_at=>Time.now if admin.save
   end
 
   def self.down
-    User.find_by_email('admin@logbook.it').destroy
+    User.find_by_email('admin@logbook.it') do |admin|
+      admin.destroy if admin
+    end
   end
 end
