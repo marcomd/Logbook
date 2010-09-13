@@ -8,6 +8,18 @@ class User < ActiveRecord::Base
   attr_accessible :email, :password, :password_confirmation, :confirmed_at, :roles
 
   has_and_belongs_to_many :tasks
+
+  #People who follow you
+  has_and_belongs_to_many :followers,
+                          :class_name => "User",
+                          :join_table => "followers_users",
+                          :association_foreign_key => "follower_id"
+  #Who are you following
+  has_and_belongs_to_many :following,
+                          :class_name => "User",
+                          :join_table => "followers_users",
+                          :foreign_key => "follower_id",
+                          :association_foreign_key => "user_id"
   
   has_many :projects, :dependent => :nullify
 

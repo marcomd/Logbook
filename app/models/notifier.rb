@@ -5,7 +5,7 @@ class Notifier < ActionMailer::Base
      args[:name] = 'amministratore'
      emails = User.with_role('admin').map(&email) + args[:emails]
      recipients emails.join(',')
-     from "#{APPLICATION_NAME} <CyberMail@ergoitalia.it>"
+     from "#{APPLICATION_NAME} <admin@logbook.it>"
      subject args[:task] || "Notice"
      sent_on Time.now
      body :args => args
@@ -14,7 +14,7 @@ class Notifier < ActionMailer::Base
 
   def user_notification(args={})
      recipients args[:address]
-     from "#{APPLICATION_NAME} <CyberMail@ergoitalia.it>"
+     from "#{APPLICATION_NAME} <admin@logbook.it>"
      subject args[:task] || "Notice"
      sent_on Time.now
      body :args => args

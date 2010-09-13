@@ -21,7 +21,7 @@
       <td><%=link_to(h(activity.task.try(:code)), activity.task, {:class => 'lightview', :rel => 'ajax', :title => "#{h activity.task.code} :: :: ajax: { method: 'get' }, width: 800, height: 500"}) if activity.task %></td>
       <td><%=h activity.day %></td>
       <td><%=h activity.hours %></td>
-      <td><%=h activity.description %></td>
+      <td><%=h truncate activity.description, :length => 200 %></td>
       <td><%= link_to t(:show), activity %></td>
       <td><%= link_to t(:edit), edit_activity_path(activity) %></td>
       <td><%= link_to t(:destroy), activity, :confirm => t(:sure?), :method => :delete %></td>

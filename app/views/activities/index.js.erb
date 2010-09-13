@@ -3,7 +3,7 @@
 
 <% for activity in @activities %>
 <div class="blog activity">
-  <p class="title"><%=h l activity.day, :format => '%A - %d %B %Y' %></p>
+  <p class="title"><%=l activity.day, :format => '%A - %d %B %Y' %></p>
   <p class="subtitle"><%= toname activity.user.try(:email) %> - <%=h activity.hours %> <%= t "attributes.activity.hour#{activity.hours == 1 ? '' : 's'}" %></p>
   <p><%=h activity.description %></p>
   <p>

@@ -5,7 +5,6 @@ module ApplicationHelper
   def toname(email)
     return unless email
     #restituisce l'email spezzata in due dalla chiocciola
-    #([a-zA-Z][\w\.-]*[a-zA-Z0-9])@([a-zA-Z0-9][\w\.-]*[a-zA-Z0-9]\.[a-zA-Z][a-zA-Z\.]*[a-zA-Z])
     email.match(/[a-zA-Z][\w\.-]*[a-zA-Z0-9]/).to_s.split(/[^a-z0-9]/i).map{|w| w.capitalize}.join ' '
   end
 
@@ -45,6 +44,7 @@ module ApplicationHelper
     i18n_script + super(*args)
   end
 
+  #Show a progression bar
   def show_bar(total, partial)
     partial = partial.inject{|tot,h| tot+h} if partial.is_a? Array
     perc = partial.to_f/total.to_f
@@ -59,4 +59,10 @@ module ApplicationHelper
     end if total and total > 0
     image_tag("styles/#{STYLE}/bar_#{bar}.gif", {:title => "#{t(:progress)} #{(perc*100).to_i}%"}) if bar
   end
+
+   #Pluralize without the number
+   def I18n_pluralize(count, singular, plural = nil)
+     ((count == 1 || count =~ /^1(\.0+)?$/) ? singular : (plural || singular.pluralize))
+   end
+
 end

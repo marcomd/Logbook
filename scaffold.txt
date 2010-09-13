@@ -2,8 +2,9 @@ script\scaffold
 
 
 project user:references name:string description:text
-task manager:references user:references project:references name:string description:text code:string expected_hours:integer
+task manager:references user:references project:references name:string description:text code:string expected_hours:integer state:integer
 activity user:references task:references day:date hours:integer description:text
 
 #without primary key id (:id => false)
 tasks_users task:references user:references
+users_users user:references

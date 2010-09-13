@@ -4,8 +4,9 @@ class ProjectsController < ApplicationController
   # GET /projects
   # GET /projects.xml
   def index
-    @projects = Project.all
-   respond_to do |format|
+    @projects = Project.find :all, :include => :tasks
+    
+    respond_to do |format|
       format.html # index.html.erb
       format.xml  { render :xml => @projects }
     end
@@ -15,22 +16,24 @@ class ProjectsController < ApplicationController
   # GET /projects/1
   # GET /projects/1.xml
   def show
-    @project = Project.find(params[:id])
+    @project = Project.find params[:id], :include=>{:tasks => :activities}
+    @tasks = @project.tasks
 
     respond_to do |format|
       format.html # show.html.erb
+      format.js
       format.xml  { render :xml => @project }
 #      format.pdf do
 #        render  :pdf => "file_name",
 #                :template => "projects/show.html.erb",
 #                :wkhtmltopdf => 'c:/Programmi/wkhtmltopdf/wkhtmltopdf.exe'
 #      end
-      format.pdf do
-        render :pdf => "file_name",
-               :template => "projects/show.html.erb",
-               :stylesheets => ["application","prince"],
-               :layout => "pdf"
-      end
+#      format.pdf do
+#        render :pdf => "file_name",
+#               :template => "projects/show.html.erb",
+#               :stylesheets => ["application","prince"],
+#               :layout => "pdf"
+#      end
     end
   end  
 

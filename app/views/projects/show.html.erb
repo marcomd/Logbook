@@ -1,33 +1,26 @@
 <% title "#{t 'models.project'}" %>
 
+<div class="blog project">
+  <p class="title"><%= toname @project.name %></p>
+  <p class="subtitle"><%=h toname @project.user.try(:email) %></p>
+  <p><%=h @project.description %></p>
+</div>
+
+<%  @tasks.each do |task| -%>
+  <div class="blog task">
+    <p class="title"><%= link_to(h(task.code), task, {:class => 'lightview', :rel => 'ajax', :title => "#{h task.code} :: :: ajax: { method: 'get' }, width: 800, height: 500"}) %></p>
+    <p class="subtitle"><%=h toname @project.user.try(:email) %></p>
+    <p>
+      <%= image_tag("styles/#{STYLE}/task_state_#{task.state}.png", {:title => t("attributes.task.states.#{task.state_name}")}) if task.state %>
+      <%=h task.description %>
+    </p>
+    <p><%= show_bar(task.expected_hours, task.activities.map{|a| a.hours}.inject{|tot,h| tot+h}) %></p>
+  </div>
+<% end -%>
 
 <p>
-  <strong><%=t 'attributes.project.user' %>:</strong>
-  <%=h @project.user.try(:email) %>
-</p>
-
-<p>
-  <strong><%=t 'attributes.project.name' %>:</strong>
-  <%=h @project.name %>
-</p>
-
-<p>
-  <strong><%=t 'attributes.project.description' %>:</strong>
-  <%=h @project.description %>
-</p>
-
-
-<p>
-
   <%= link_to "#{t :new} #{t 'models.project'}", new_project_path %> |
-
-
   <%= link_to t(:edit), edit_project_path(@project) %> |
-
-
   <%= link_to t(:destroy), @project, :confirm => t(:sure?), :method => :delete %> |
-
-
   <%= link_to t(:back_to_list), projects_path %>
-
 </p>

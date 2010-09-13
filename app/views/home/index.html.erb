@@ -1,1 +1,16 @@
 <%= show_calendar :month => @month, :year => @year, :highlight_today => true %>
+
+<div class="home blog">
+  <div class="icon"></div>
+  <div class="posts">
+    <p class="title"><%= t 'sentences.recent_activities' %></p>
+  <% @activities.each do |activity| %>
+    <div class="blog activity">
+      <p class="title"><%= toname activity.user.try(:email) %> - <%= l activity.created_at, :format => '%A %d %B %Y, %H:%M' %></p>
+      <p class="subtitle"><%= activity.task.project.try(:name) if activity.task && activity.task.project %></p>
+      <p><%= h activity.description %></p>
+    </div>
+  <% end %>
+  </div>
+</div>
+<div class="clear"></div>

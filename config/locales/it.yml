@@ -203,6 +203,12 @@ it:
   updated: "L'oggetto {{model}} è stato modificato correttamente."
   updated_ko: "Un errore ha impedito la modifica dell'oggetto {{model}}."
   deleted: "L'oggetto {{model}} è stato eliminato."
+  sentences:
+    recent_activities: "Le attività più recenti:"
+    task_activities1: "Questo incarico ha <strong>{{activities}}</strong>"
+    task_activities2: "per un totale di <strong>{{hours}}</strong>."
+
+  task_activities: "Questo incarico ha <strong>{{activities}}</strong> per un totale di <strong>{{hours}}</strong>."
 
   calendar_date_select:
     ok: "Ok"

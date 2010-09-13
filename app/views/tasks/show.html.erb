@@ -52,7 +52,11 @@
 </p>
 
 <p>
-  Sono state effettuate <strong><%=h @activities.size %> </strong> <%= link_to "attività", activities_path(:code => @task.code), {:class => 'lightview', :rel => 'ajax', :title => "#{h @task.code} :: :: ajax: { method: 'get' }, width: 800, height: 500"} %> per un totale di <strong><%=h @tot_hours %> </strong> ore.
+  <% str_activity = t("models.#{I18n_pluralize(@activities.size,'activity')}") %>
+  <%= t 'sentences.task_activities1', :activities => @activities.size %>
+  <%= link_to "#{@activities.size} #{str_activity}", activities_path(:code => @task.code), {:class => 'lightview', :rel => 'ajax', :title => "#{h @task.code} :: :: ajax: { method: 'get' }, width: 800, height: 500"} %>
+  <% str_hour = t("attributes.activity.#{I18n_pluralize(@tot_hours,'hour')}") %>
+  <%= t 'sentences.task_activities2', :hours => "#{@tot_hours} #{str_hour}" %>
 </p>
 
 <p>

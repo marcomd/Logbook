@@ -13,6 +13,6 @@ class CreateTasksUsers < ActiveRecord::Migration
   def self.down
     remove_index :tasks_users, :task_id
     remove_index :tasks_users, :user_id
-    drop_table :roles_users
+    drop_table :tasks_users
   end
 end

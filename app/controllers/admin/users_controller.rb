@@ -62,6 +62,7 @@ class Admin::UsersController < ApplicationController
   # PUT /users/1.xml
   def update
     @user = User.find(params[:id])
+    #Change password only if it is setted
     unless params[:user]['password'] && params[:user]['password'].size > 0
       params[:user].delete 'password'
       params[:user].delete 'password_confirmation'

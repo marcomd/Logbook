@@ -301,8 +301,11 @@ div.home.blog {
     height: 163px;
   }
   div.home.blog > div.posts {
-    /*float: left;*/
     margin-left: 250px;
+  }
+  div.home.blog > div.posts > .title {
+    font-weight: bold;
+    font-style: italic;
   }
 div.blog {
   padding: 1em;
@@ -314,9 +317,6 @@ div.blog {
   div.blog > p.subtitle {
     margin: 0;
   }
-/*div.home.blog.activity {
-  margin-left: 250px;
-}*/
 div.blog.activity {
   border-bottom: 1px dashed #ccc;
 }

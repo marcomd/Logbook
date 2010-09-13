@@ -8,8 +8,8 @@ class ApplicationController < ActionController::Base
   layout proc{ |c| c.request.xhr? ? false : "application" }
 
   def localizate
-    session[:lang] = params[:lang] if params[:lang]
-    I18n.locale = session[:lang] if session[:lang]
+    session[:locale] = params[:locale] if params[:locale]
+    I18n.locale = session[:locale] if session[:locale]
   end
 
   helper :all # include all helpers, all the time

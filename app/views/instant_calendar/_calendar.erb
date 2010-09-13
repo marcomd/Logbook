@@ -10,9 +10,18 @@
         <div id="calendar_wrap">
           <table summary="Calendar">
             <caption>
-            <%= link_to "<<", root_path(:year=>prev_month.year,:month=>prev_month.month) %>
-            <%= l time, :format => '%B %Y'%>
-            <%= link_to ">>", root_path(:year=>next_month.year,:month=>next_month.month) %>
+              <div class="center">
+                
+                  <%= link_to "", root_path(:year=>prev_month.year,:month=>prev_month.month), {:class => 'go back'} %>
+                
+                <div class="caption">
+                  <%= l time, :format => '%B %Y'%>
+                </div>
+                
+                  <%= link_to "", root_path(:year=>next_month.year,:month=>next_month.month), {:class => 'go next'} %>
+                
+              </div>
+              <div class="clear"/>
             </caption>
             <thead>
               <tr>

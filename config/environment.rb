@@ -7,9 +7,9 @@ RAILS_GEM_VERSION = '2.3.5' unless defined? RAILS_GEM_VERSION
 require File.join(File.dirname(__FILE__), 'boot')
 
 Rails::Initializer.run do |config|
-  config.gem 'devise', :version => '1.0.4'
-  config.gem 'warden', :version => '0.9.6'
-  config.gem 'win32console', :version => '>=1.2.0'
+  config.gem 'devise', :version => '1.0.6'
+  config.gem 'warden', :version => '0.10.3'
+  #config.gem 'win32console', :version => '>=1.2.0'
   config.gem 'formtastic', :version => '0.9.8'
   #config.gem 'calendare_date_select', :version => '1.16.1'
 

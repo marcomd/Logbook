@@ -129,6 +129,10 @@ en:
   updated: "{{model}} was successfully updated."
   updated_ko: "An error prohibited {{model}} to be updated."
   deleted: "{{model}} was successfully deleted."
+  sentences:
+    recent_activities: "Most recent activities:"
+    task_activities1: "This task has <strong>{{activities}}</strong>"
+    task_activities2: "with an amount of <strong>{{hours}}</strong>."
 
   calendar_date_select:
     ok: "Ok"

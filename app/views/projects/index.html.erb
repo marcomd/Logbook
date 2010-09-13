@@ -5,7 +5,7 @@
     <tr>
       <th><%= t 'attributes.project.user' %></th>
       <th><%= t 'attributes.project.name' %></th>
-      <th><%= t 'attributes.project.description' %></th>
+      <th><%= t 'models.tasks' %></th>
     </tr>
   </thead>
   <tbody>
@@ -13,8 +13,13 @@
     <tr class="<%= cycle 'even', 'odd' %>">
       <td><%=h toname project.user.try(:email) %></td>
       <td><%=h project.name %></td>
-      <td><%=h project.description[0..30] %>...</td>
-      <td><%= link_to t(:show), project %></td>
+      <td>
+        <% num = project.tasks.select{|t| t.new? }.size %>
+        <%= "#{num} #{t('attributes.task.states.new')} " if num > 0 %>
+        <% num = project.tasks.select{|t| t.working? }.size %>
+        <%= "#{num} #{t('attributes.task.states.working')} " if num > 0 %>
+      </td>
+      <td><%= link_to t(:show), project, {:class => 'lightview', :rel => 'ajax', :title => "#{h project.name} :: :: ajax: { method: 'get' }, width: 800, height: 500"} %></td>
       <td><%= link_to t(:edit), edit_project_path(project) %></td>
       <td><%= link_to t(:destroy), project, :confirm => t(:sure?), :method => :delete %></td>
     </tr>

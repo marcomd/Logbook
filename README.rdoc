@@ -1,0 +1,47 @@
+== Benvenuti in Logbook
+
+Questa applicazione Rails 2.3.5 nasce con lo scopo di gestire piccoli team di sviluppo e manutenzione.
+Logbook significa diario di bordo. Uno degli obbiettivi è anche quello di creare un diario che agevoli la propria organizzazione con lo scopo diincrementare la propria reddittivit�. Deve creare, inoltre, un contatto fra le diverse risorse del team. Una sorta di social network aziendale.
+Attualmente si trova in uno stato embrionale e alcune informazioni potrebbero presto cambiare.
+
+Gli archivi principali sono:
+* Progetti
+* Incarichi (tasks)
+* Attività
+
+Il progetto può anche indicare un reparto di un'azienda, attualmente non ha un inizio, una fine, ne obbiettivi o milestones
+Ogni progetto può avere diversi incarichi e questi diverse attività.
+L'incarico ha uno stato impostato in automatico dagli eventi, mediante il plugin state_machine
+La compilazione quotidiana della risorsa e l'attività. E' quella che dovrebbe essere utilizzata per creare il diario.
+Nella home c'è il calendario col mese corrente. Quando la somma delle attività totalizza 8 ore il giorno diventa bianco, altrimenti è sul rosso per sollecitare la compilazione. Il venerdì richiede invece 5 ore.
+Sotto il calendario c'è un riepilogo con le ultime attività inserite dalle risorse.
+
+Gli amministratori hanno una sezione distinta, sotto il namespace :admin
+
+
+== TODO
+
+* Migliorare la sezione project managment ed implementare quella social network
+* Creare una sezione esportazione dei dati, web online, web come servizio e batch
+* Creare una sezione per le statistiche
+* Parametrizzare le ore da consuntivare
+* Creare test rspec
+* Migrare a rails 3 e ruby 1.9.2
+
+
+== Requisiti
+
+* Testato con ruby 1.8.7
+* Rails 2.3.5
+* warden 0.10.2
+* devise 1.0.6
+* formtastic 0.9.8
+
+
+== Sito web
+
+Chi fosse interessato può provare la demo
+http://logbook.mastrodonato.info
+
+Per la richiesta della user e pwd:
+m.mastrodonato@gmail.com

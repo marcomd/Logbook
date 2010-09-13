@@ -106,8 +106,8 @@ class ActivitiesController < ApplicationController
 
   # GET /activities/new
   # GET /activities/new.xml
-  def new
-    @activity = Activity.new
+  def new(activity=nil)
+    @activity = activity || Activity.new
     if session[:date]
       @activity.day = Date.new(session[:date][:year].to_i, session[:date][:month].to_i, session[:date][:day].to_i)
     else
@@ -115,6 +115,7 @@ class ActivitiesController < ApplicationController
     end
     @tasks = Task.summarizable
 
+    return if activity
     respond_to do |format|
       format.html # new.html.erb
       format.xml  { render :xml => @activity }
@@ -131,7 +132,7 @@ class ActivitiesController < ApplicationController
       @activity.transaction do
         begin
           raise nil unless @activity.save
-          @activity.task.set_state_from_activities!
+          @activity.task.set_state_from!
         rescue => err
           outcome = nil
           flash[:error] = err.message #errors.map{|attr, type| I18n.t(type, :field => attr)}.join(', ')
@@ -143,6 +144,7 @@ class ActivitiesController < ApplicationController
         format.html { redirect_to(@activity) }
         format.xml  { render :xml => @activity, :status => :created, :location => @activity }
       else
+        new @activity
         format.html { render :action => "new" }
         format.xml  { render :xml => @activity.errors, :status => :unprocessable_entity }
       end

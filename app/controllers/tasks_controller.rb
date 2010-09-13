@@ -71,7 +71,7 @@ class TasksController < ApplicationController
   def show
     @task = Task.find(params[:id])
     @activities = @task.activities.find(:all, :select => :hours)
-    @tot_hours = @activities.map{|a| a.hours}.inject{|tot,h| tot+h}
+    @tot_hours = @activities.map{|a| a.hours}.inject{|tot,h| tot+h} || 0
 #    @show_bar = case @tot_hours.to_f/@task.expected_hours.to_f
 #    when 0 then 0
 #    when 0..0.23 then 1
