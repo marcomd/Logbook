@@ -1,3 +1,9 @@
+0.0.2 (September 14th, 2010)
+
+* Introduced users relations: followers
+* Added migrate to create admin user
+
+
 0.0.1.1 (September 13th, 2010)
 
 * Initial commit
