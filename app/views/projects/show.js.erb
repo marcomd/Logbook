@@ -1,5 +1,5 @@
 <div class="blog project">
-  <p class="title"><%= toname @project.name %></p>
+  <p class="title"><%=h @project.name %></p>
   <p class="subtitle"><%=h toname @project.user.try(:email) %></p>
   <p><%=h @project.description %></p>
 </div>

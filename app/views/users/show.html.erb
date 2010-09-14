@@ -1,0 +1,33 @@
+<% title h @user.email %>
+
+<div class="blog project">
+  <p class="title"><%=h toname @user.email %></p>
+  <p class="subtitle"><%=h @user.try(:email) %></p>
+  <p>
+    <strong><%=t 'attributes.user.confirmed_at' %>:</strong>
+    <%=h @user.confirmed_at %>
+  </p>
+  <p>
+    <strong><%=t 'attributes.user.sign_in_count' %>:</strong>
+    <%=h @user.sign_in_count %>
+  </p>
+</div>
+
+<% if @user.id == current_user.id -%>
+  <p>
+  <% str_followers = t("attributes.user.#{I18n_pluralize(@user.followers.size,'follower')}") %>
+  <%= t 'sentences.how_many_followers', :number => @user.followers.size, :followers => str_followers %>
+  <!--strong><%#= @user.followers.size %> <%#=t("attributes.user.#{I18n_pluralize(@user.followers.size,'follower')}") %>:</strong-->
+  <%#= render 'users', :users => @user.followers %>
+  </p>
+  <div>
+  <strong><%=t 'attributes.user.following' %>:</strong>
+  <%= render 'following', :users => @user.following %>
+  </div>
+  <p><%= link_to t(:edit), edit_project_path(@user) %></p>
+<% elsif current_user.following.map(&:id).include? @user.id -%>
+  <%= t 'sentences.already_following' %>
+  <%= link_to image_tag("styles/#{STYLE}/ico_remove.gif", {:title => t('sentences.remove_from_list')}), remove_user_from_following_user_path, {:class => 'lightview', :rel => 'ajax', :title => "#{toname @user.try(:email)} :: :: ajax: { method: 'get' }, width: 800, height: 500"} %>
+<% else -%>
+  <%= link_to t('sentences.become_follower'), add_follower_user_path, {:class => 'lightview', :rel => 'ajax', :title => "#{toname @user.try(:email)} :: :: ajax: { method: 'get' }, width: 800, height: 500"} %>
+<% end -%>

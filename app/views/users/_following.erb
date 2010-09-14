@@ -1,0 +1,9 @@
+<% users.each do |user| -%>
+  <div class="blog task">
+    <p class="title">
+      <%= link_to toname(user.try(:email)), user, {:class => 'lightview', :rel => 'ajax', :title => "#{toname user.try(:email)} :: :: ajax: { method: 'get' }, width: 800, height: 500"} %>
+      <%= link_to image_tag("styles/#{STYLE}/ico_remove.gif", {:title => t('sentences.remove_from_list')}), remove_user_from_following_user_path(user), {:class => 'lightview', :rel => 'ajax', :title => "#{toname user.try(:email)} :: :: ajax: { method: 'get' }, width: 800, height: 500"} %>
+    </p>
+    <p class="subtitle"><%=h user.try(:email) %></p>
+  </div>
+<% end -%>

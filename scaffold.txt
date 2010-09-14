@@ -7,4 +7,4 @@ activity user:references task:references day:date hours:integer description:text
 
 #without primary key id (:id => false)
 tasks_users task:references user:references
-users_users user:references
+followers_users user:references follower:references

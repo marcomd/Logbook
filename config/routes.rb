@@ -5,12 +5,13 @@ ActionController::Routing::Routes.draw do |map|
      admin.home 'home', :controller => :home, :action => :index
   end
 
+  map.devise_for :users
+
+  map.resources :users, :member => { :add_follower => :get, :remove_user_from_following => :get }
   map.resources :projects, :activities
   map.resources :tasks, :collection => { :select => :post }
 
   map.root :controller => :home
-
-  map.devise_for :users
 
   # The priority is based upon order of creation: first created -> highest priority.
 

@@ -1,0 +1,15 @@
+<% f.inputs do %>
+
+  <% if @user.sign_in_count && @user.sign_in_count <= 3 %>
+  <%= f.input :email %>
+  <% end %>
+
+  <%= f.input :password %>
+
+  <%= f.input :password_confirmation %>
+
+  <p>
+    <strong><%=t 'attributes.user.roles' %>:</strong>
+    <%=h @user.roles.join ", " %>
+  </p>
+<% end %>

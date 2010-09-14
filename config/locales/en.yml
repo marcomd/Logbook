@@ -65,6 +65,9 @@ en:
         confirmed_at: "Confirmed at"
         sign_in_count: "Sign in count"
         roles: "Roles"
+        follower: "Follower"
+        followers: "Followers"
+        following: "Following"
   formtastic:
     titles:
     labels:
@@ -129,10 +132,16 @@ en:
   updated: "{{model}} was successfully updated."
   updated_ko: "An error prohibited {{model}} to be updated."
   deleted: "{{model}} was successfully deleted."
+  added_user_to_following: "{{user}} has been added to following users list"
+  removed_user_to_following: "{{user}} has been removed from following users list"
   sentences:
     recent_activities: "Most recent activities:"
     task_activities1: "This task has <strong>{{activities}}</strong>"
     task_activities2: "with an amount of <strong>{{hours}}</strong>."
+    become_follower: "Become follower"
+    already_following: "You already are a follower"
+    remove_from_list: "Remove from the list"
+    how_many_followers: "You have <strong>{{number}}</strong> {{followers}}"
 
   calendar_date_select:
     ok: "Ok"

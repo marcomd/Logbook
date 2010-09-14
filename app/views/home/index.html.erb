@@ -6,7 +6,7 @@
     <p class="title"><%= t 'sentences.recent_activities' %></p>
   <% @activities.each do |activity| %>
     <div class="blog activity">
-      <p class="title"><%= toname activity.user.try(:email) %> - <%= l activity.created_at, :format => '%A %d %B %Y, %H:%M' %></p>
+      <p class="title"><%= link_to(toname(activity.user.try(:email)), activity.user, {:class => 'lightview', :rel => 'ajax', :title => "#{toname activity.user.try(:email)} :: :: ajax: { method: 'get' }, width: 800, height: 500"}) %> - <%= l activity.created_at, :format => '%A %d %B %Y, %H:%M' %></p>
       <p class="subtitle"><%= activity.task.project.try(:name) if activity.task && activity.task.project %></p>
       <p><%= h activity.description %></p>
     </div>

@@ -6,7 +6,7 @@ it:
       long: "%d %B %Y"
       only_day: "%e"
 
-    day_names: [Domenica, Luned√¨, Marted√¨, Mercoled√¨, Gioved√¨, Venerd√¨, Sabato]
+    day_names: [Domenica, LunedÏ, MartedÏ, MercoledÏ, GiovedÏ, VenerdÏ, Sabato]
     abbr_day_names: [Dom, Lun, Mar, Mer, Gio, Ven, Sab]
     month_names: [~, Gennaio, Febbraio, Marzo, Aprile, Maggio, Giugno, Luglio, Agosto, Settembre, Ottobre, Novembre, Dicembre]
     abbr_month_names: [~, Gen, Feb, Mar, Apr, Mag, Giu, Lug, Ago, Set, Ott, Nov, Dic]
@@ -68,7 +68,7 @@ it:
       delimiter: '.'
     currency:
       format:
-        unit: '‚Ç¨'
+        unit: '?'
         precision: 2
         format: '%n %u'
 
@@ -76,8 +76,8 @@ it:
     models: &models
       user: "Utente"
       users: "Utenti"
-      activity: "Attivit√†"
-      activities: "Attivit√†"
+      activity: "Attivit‡"
+      activities: "Attivit‡"
       task: "Incarico"
       tasks: "Incarichi"
       project: "Progetto"
@@ -129,6 +129,9 @@ it:
         confirmed_at: "Confermato"
         sign_in_count: "Accessi"
         roles: "Ruoli"
+        follower: "Sostenitore"
+        followers: "Sostenitori"
+        following: "Stai seguendo"
     errors:
       template:
         header:
@@ -136,18 +139,18 @@ it:
           other: "Non posso salvare questo {{model}}: {{count}} errori."
         body: "Per favore ricontrolla i seguenti campi:"
       messages:
-        inclusion: "non √® incluso nella lista"
-        exclusion: "√® riservato"
-        invalid: "non √® valido"
+        inclusion: "non Ë incluso nella lista"
+        exclusion: "Ë riservato"
+        invalid: "non Ë valido"
         confirmation: "non coincide con la conferma"
         accepted: "deve essere accettata"
-        empty: "non pu√≤ essere vuoto"
-        blank: "non pu√≤ essere lasciato in bianco"
-        too_long: "√® troppo lungo (il massimo √® {{count}} lettere)"
-        too_short: "√® troppo corto (il minimo √® {{count}} lettere)"
-        wrong_length: "√® della lunghezza sbagliata (deve essere di {{count}} lettere)"
-        taken: "√® gi√† in uso"
-        not_a_number: "non √® un numero"
+        empty: "non puÚ essere vuoto"
+        blank: "non puÚ essere lasciato in bianco"
+        too_long: "Ë troppo lungo (il massimo Ë {{count}} lettere)"
+        too_short: "Ë troppo corto (il minimo Ë {{count}} lettere)"
+        wrong_length: "Ë della lunghezza sbagliata (deve essere di {{count}} lettere)"
+        taken: "Ë gi‡ in uso"
+        not_a_number: "non Ë un numero"
         greater_than: "deve essere superiore a {{count}}"
         greater_than_or_equal_to: "deve essere superiore o uguale a {{count}}"
         equal_to: "deve essere uguale a {{count}}"
@@ -169,20 +172,20 @@ it:
     hints:
       user:
         email: "Utilizza una email valida"
-        confirmed_at: "Imposta quando √® stata confermata, determina anche se attiva."
+        confirmed_at: "Imposta quando Ë stata confermata, determina anche se attiva."
 
       activity:
-        task: "Seleziona l'incarico a cui associare l'attivit√†"
+        task: "Seleziona l'incarico a cui associare l'attivit‡"
         day: "Inserisci il giorno di riferimento"
         hours: "Inserisci le ore"
-        description: "Descrivi la tua attivit√†"
+        description: "Descrivi la tua attivit‡"
 
       task:
         manager: "Scegli il responsabile per questo incarico"
         user: "Scegli l'utente di riferimento"
         project: "Seleziona il progetto"
         name: "Inserisci un nome che identifichi questo incarico"
-        description: "Descrivi gli obiettivi da raggiungere ed eventualmente, la modalit√†."
+        description: "Descrivi gli obiettivi da raggiungere ed eventualmente, la modalit‡."
         code: "Inserisci il codice"
         expected_hours: "Inserisci la stima delle ore necessarie al raggiungimento degli obiettivi"
 
@@ -195,20 +198,24 @@ it:
       create: "Crea {{model}}"
       update: "Salva le modifiche"
 
-  unknown_request: "Spiacente, richiesta sconosciuta, non √® possibile eseguirla"
+  unknown_request: "Spiacente, richiesta sconosciuta, non Ë possibile eseguirla"
   generic_error: "Un errore impedisce di svolgere questa operazione"
   permission_denied: "Non hai i privilegi per svolgere questa operazione."
-  created: "L'oggetto {{model}} √® stato creato correttamente."
+  created: "L'oggetto {{model}} Ë stato creato correttamente."
   created_ko: "Un errore ha impedito la creazione dell'oggetto {{model}}."
-  updated: "L'oggetto {{model}} √® stato modificato correttamente."
+  updated: "L'oggetto {{model}} Ë stato modificato correttamente."
   updated_ko: "Un errore ha impedito la modifica dell'oggetto {{model}}."
-  deleted: "L'oggetto {{model}} √® stato eliminato."
+  deleted: "L'oggetto {{model}} Ë stato eliminato."
+  added_user_to_following: "{{user}} Ë stato aggiunto alla lista degli utenti che stai seguendo"
+  removed_user_to_following: "{{user}} Ë stato rimosso dalla lista degli utenti che stai seguendo"
   sentences:
-    recent_activities: "Le attivit√† pi√π recenti:"
+    recent_activities: "Le attivit‡ pi˘ recenti:"
     task_activities1: "Questo incarico ha <strong>{{activities}}</strong>"
     task_activities2: "per un totale di <strong>{{hours}}</strong>."
-
-  task_activities: "Questo incarico ha <strong>{{activities}}</strong> per un totale di <strong>{{hours}}</strong>."
+    become_follower: "Diventa sostenitore"
+    already_following: "Sei un suo sostenitore"
+    remove_from_list: "Togli dalla lista"
+    how_many_followers: "Hai <strong>{{number}}</strong> {{followers}}"
 
   calendar_date_select:
     ok: "Ok"
